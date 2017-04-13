@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <Windows.h>
-#include <string>
 using namespace std;
 int main() {
 	int room = 1;
@@ -22,7 +21,6 @@ int main() {
 			break;
 		case 2: ////easter egg room////
 			cout << "!!!!!!!!!!!!!EAT SOHOEUENS SHORTS!!!!!!!!!!!" << endl;
-			PlaySound(("booty.wav"), NULL, SND_FILENAME);
 			input = "quit";
 			system("Color 4A");
 			system("pause");
@@ -43,7 +41,7 @@ int main() {
 				system("Color 4B");
 
 				break;
-		case 4:
+		case 4://item in this room
 			cout << "You enter a room with a PC master race in it," << endl;
 			if (item[2].compare("PC") != 0)
 				cout << "you see a pc master race on the table" << endl;
@@ -64,7 +62,7 @@ int main() {
 			if (input.compare("west") == 0 || input.compare("go west") == 0)
 				room = 6;
 			break;
-		case 6:
+		case 6://get rekt room
 			cout << "You enter the Room, Oh no you look in the mirror" << endl;
 			cout << "You can go west or south" << endl;
 			cin >> input;
@@ -74,12 +72,10 @@ int main() {
 				room = 8;
 			break;
 		case 7://death room//
-			PlaySound(("molly.wav"), NULL, SND_FILENAME);
 			cout << "You have entered the gas chamber, where the evil Molly recideds, you are dead!" << endl;
 			input = "quit";
 			system("Color 4A");
 			system("pause");
-			PlaySound(("dead.wav"), NULL, SND_FILENAME);
 			break;
 		case 8:
 			cout << "You enter the room of the evil Levi, hes not in here tho" << endl;
@@ -104,19 +100,20 @@ int main() {
 				room = 8;
 			break;
 		case 10:
-			cout << "You are in room 9!" << endl;
-			if (item[2].compare("book") != 0)
-				cout << "you see a book on an empty table" << endl;
-			cout << "You can go west" << endl;
-			cin >> input;
-			if (input.compare("west") == 0 || input.compare("go west") == 0)
-				room = 11;
-			break;
+			cout << "You can hear something in the next room, do you dare and find out!?" << endl;
+			if (item[2].compare("gummy bear") != 0)
+				cout << "you see a gummy bear" << endl;
+			if (input.compare("gummy bear") == 0) { //Bacon is now in the inventory
+				item[1] = "gummy bear"; //put in 
+				cout << "You grabbed the good Bacon!" << endl;
+				cout << "You can go west" << endl;
+				cin >> input;
+				if (input.compare("west") == 0 || input.compare("go west") == 0)
+					room = 11;
+				break;
 		case 11:
-			PlaySound(("levi.wav"), NULL, SND_FILENAME);
-			cout << "You Have encounterd the dark master Leo!!! He will only let you go if you feed him and play computer games with him" << endl;
-			if (item[2].compare("book") != 0)
-				cout << "You must fill his request" << endl;
+			cout << "You Have encounterd the DARK MASTER LEO!!! He will only let you go if you feed him and play computer games with him" << endl;
+			cout << "You must fill his request" << endl;
 			cin >> input;
 			if (input.compare("quit") == 0 || input.compare("go west") == 0)
 				room = 2;
@@ -128,8 +125,9 @@ int main() {
 
 
 			}//end switch
-		}//end while
+			}//end while
 
-	}cout << "Game over" << endl;
-	exit(0);
-}//end main// 
+		}cout << "Game over" << endl;
+		exit(0);
+	}//end main// 
+}
